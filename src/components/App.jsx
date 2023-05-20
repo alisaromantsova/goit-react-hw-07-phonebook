@@ -1,16 +1,20 @@
-export const App = () => {
+import React from 'react';
+import { Contacts } from './Contacts/Contacts';
+import { ContactForm } from './ContactForm/ContactForm';
+import { SharedLayout } from './SharedLayout/SharedLayout';
+import { Routes, Route } from 'react-router-dom';
+
+const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Contacts />} />
+          <Route path="/form" element={<ContactForm />} />
+        </Route>
+      </Routes>
+    </>
   );
 };
+
+export default App;
