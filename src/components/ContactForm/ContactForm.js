@@ -4,21 +4,14 @@ import css from './ContactForm.module.css';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import Notiflix from 'notiflix';
 
-import { useState, useEffect } from 'react';
-import { fetchContacts } from 'redux/operation';
+import { useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 
 import { useSelector } from 'react-redux';
 import { addContacts } from 'redux/operation';
 
-import {
-  selectStatusFilter,
-  selectIsLoading,
-  selectError,
-  selectContacts,
-} from 'redux/selectors';
-import { nanoid } from 'nanoid';
+import { selectContacts } from 'redux/selectors';
 
 const schema = yup.object().shape({
   name: yup.string().required(),
@@ -26,9 +19,7 @@ const schema = yup.object().shape({
 });
 export const ContactForm = () => {
   const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
-  const filter = useSelector(selectStatusFilter);
+
   const dispatch = useDispatch();
   const [initialValues] = useState({
     name: '',

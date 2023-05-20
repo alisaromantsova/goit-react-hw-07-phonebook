@@ -1,9 +1,9 @@
 import css from './Contacts.module.css';
 import { ContactItem } from '../ContactItem/ContactItem';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, Outlet } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { fetchContacts } from 'redux/operation';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+
 import {
   selectStatusFilter,
   selectIsLoading,
@@ -14,7 +14,6 @@ import { Filter } from 'components/Filter/Filter';
 export const Contacts = () => {
   const [isOpen, setOpen] = useState(false);
 
-  const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
