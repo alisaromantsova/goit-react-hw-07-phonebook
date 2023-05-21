@@ -2,9 +2,8 @@ import css from './Contacts.module.css';
 import { ContactItem } from '../ContactItem/ContactItem';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchContacts } from 'redux/operation';
+import { useState } from 'react';
+//
 
 import {
   selectStatusFilter,
@@ -20,12 +19,6 @@ export const Contacts = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const filter = useSelector(selectStatusFilter);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const linkToggle = () => {
     if (!isOpen) {
